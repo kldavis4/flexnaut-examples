@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Label xmlns:mx="http://www.adobe.com/2006/mxml">
+  <mx:Script>
+    <![CDATA[
+      import mx.binding.utils.BindingUtils;
+      
+      override protected function createChildren():void
+      {
+        super.createChildren();
+        
+        //Instance the ImageHover object and attach it to
+        //the item renderer
+        var imageHover:ImageHover = new ImageHover();
+        imageHover.parentComponent = this;
+        
+        //Create a binding between the image property of the data object
+        //and the source property of the ImageHover so it knows which image to display
+        BindingUtils.bindProperty( imageHover, "source", this, ["data","image"] );
+        
+        //Create a binding between the name property of the data object
+        //and the title property of the ImageHover so it knows which title to display
+        BindingUtils.bindProperty( imageHover, "title", this, ["data","name"] );        
+      }
+    ]]>
+  </mx:Script>
+</mx:Label>
