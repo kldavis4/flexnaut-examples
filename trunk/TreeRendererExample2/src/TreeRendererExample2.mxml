@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10" creationComplete="init()">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10" creationComplete="init()" xmlns:local="*">
   <mx:Script>
     <![CDATA[
       import mx.collections.ArrayCollection;
@@ -43,11 +43,11 @@
     ]]>
   </mx:Script>
   <mx:Panel title="Variable Size Tree Item Renderer Example" height="100%" width="100%">
-    <mx:Tree dataProvider="{dataProvider}" 
-             defaultLeafIcon="{null}" 
-             showRoot="false" 
-             variableRowHeight="true"
-             itemRenderer="CustomTreeItemRenderer"
-             width="100%" height="100%"/>
+    <local:CustomTree dataProvider="{dataProvider}" 
+                      defaultLeafIcon="{null}" 
+                      showRoot="false" 
+                      variableRowHeight="true"
+                      itemRenderer="CustomTreeItemRenderer"
+                      width="100%" height="100%"/>
   </mx:Panel>
 </mx:Application>

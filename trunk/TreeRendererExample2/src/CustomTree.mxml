@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Tree xmlns:mx="http://www.adobe.com/2006/mxml">
+  <mx:Script>
+    <![CDATA[
+      private var renderersResized:Boolean = false;
+      
+      override protected function createChildren():void
+      {
+        super.createChildren();
+  
+        listContent.addEventListener( RendererResizeEvent.RENDERER_RESIZE, handleRendererResize, false, 0, true );
+      }
+      
+      private function handleRendererResize( et:RendererResizeEvent ):void
+      {
+        renderersResized = true;
+        invalidateProperties();
+      }
+      
+      override protected function commitProperties():void
+      {
+        super.commitProperties();
+        
+        if ( renderersResized )
+        {
+          itemsSizeChanged = true;
+          invalidateDisplayList();
+          renderersResized = false;
+        }
+      }   
+    ]]>
+  </mx:Script>
+</mx:Tree>
