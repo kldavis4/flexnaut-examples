@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10" creationComplete="init()">
+  <mx:Script>
+    <![CDATA[
+      import mx.collections.ArrayCollection;
+      
+      [Bindable] private var dataProvider:ArrayCollection = new ArrayCollection();
+      
+      private function init():void
+      {
+        var obj:Object = new Object();
+        obj.title = "First Item";
+        obj.description = "Line 1<br>&nbsp;Line 2<br>&nbsp;&nbsp;Line 3";
+        obj.icon_src = "icon.png";
+        obj.icon_width = 20;
+        obj.icon_height = 20;
+        dataProvider.addItem( obj );
+        
+        obj = new Object();
+        obj.title = "Second Item";
+        obj.description = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent volutpat volutpat quam. Praesent sed lorem sed velit malesuada posuere. Donec tempus, libero sit amet tristique fringilla, odio mauris tempor enim, ut ornare justo ipsum interdum ipsum. Nam dapibus libero ac pede. Pellentesque posuere, erat vitae euismod laoreet, dolor quam semper massa, sit amet consectetuer mauris lacus id enim. Morbi tortor. Vestibulum sollicitudin est varius erat. Aliquam erat volutpat. Nam sem massa, tempus non, sodales id, auctor in, arcu. Sed faucibus massa sed nunc. Ut volutpat. Sed ultricies. Cras ante. Sed commodo sodales risus. Nullam enim ligula, malesuada vitae, consequat at, hendrerit eu, tortor. Sed turpis nulla, imperdiet sit amet, tincidunt egestas, pulvinar non, mi. Ut nulla quam, commodo vel, consequat at, faucibus mollis, est. In eu tortor in leo consequat sollicitudin. Etiam commodo arcu id velit. Nullam eget quam.";
+        obj.icon_src = "icon.png";
+        obj.icon_width = 20;
+        obj.icon_height = 20;
+        dataProvider.addItem( obj );
+
+        obj = new Object();
+        obj.title = "Third Item";
+        obj.description = "Line 1";
+        obj.icon_src = "icon.png";
+        obj.icon_width = 20;
+        obj.icon_height = 20;
+        dataProvider.addItem( obj );
+        
+        obj = new Object();
+        obj.title = "Fourth Item";
+        obj.description = "Line 1<br>&nbsp;Line 2<br>&nbsp;&nbsp;Line 3<br>&nbsp;&nbsp;&nbsp;Line 4<br>&nbsp;&nbsp;&nbsp;&nbsp;Line 5<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Line 6";
+        obj.icon_src = "icon.png";
+        obj.icon_width = 20;
+        obj.icon_height = 20;
+        dataProvider.addItem( obj );
+      }
+    ]]>
+  </mx:Script>
+  <mx:Panel title="Variable Size Tree Item Renderer Example" height="100%" width="100%">
+    <mx:Tree dataProvider="{dataProvider}" 
+             defaultLeafIcon="{null}" 
+             showRoot="false" 
+             variableRowHeight="true"
+             itemRenderer="CustomTreeItemRenderer"
+             width="100%" height="100%"/>
+  </mx:Panel>
+</mx:Application>
