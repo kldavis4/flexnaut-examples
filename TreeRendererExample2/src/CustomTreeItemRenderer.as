@@ -10,7 +10,6 @@ package
     
   public class CustomTreeItemRenderer extends TreeItemRenderer
   {
-    protected var _tree:Tree;
     protected var iconImage:Image;
     protected var description:Text;		
 		
@@ -46,18 +45,6 @@ package
   
       if ( this.parent == null ) return;
       
-      if ( _tree == null )
-      {
-        _tree = Tree(this.parent.parent);
-        _tree.addEventListener(ResizeEvent.RESIZE, function( evt:ResizeEvent ):void
-        {
-          //We must unset the height and width of the text field or it won't re-measure
-          //and won't resize properly
-          description.explicitWidth = NaN;
-          description.explicitHeight = NaN;
-        });
-      }
-  
       //Setup the source and the height and width of the
       //icon image
     	iconImage.source = String(super.data.icon_src);
@@ -73,12 +60,7 @@ package
     {
       super.measure();
       
-      //Setting the width of the description field
-      //causes the height calculation to happen
-      description.width = explicitWidth - super.label.x;
-      
-      //We add the measuredHeight to the renderers measured height
-      measuredHeight += description.measuredHeight;
+      measuredHeight = measuredMinHeight = measuredHeight + Math.max( description.getExplicitOrMeasuredHeight(), iconImage.getExplicitOrMeasuredHeight() ); 
     }
      
     // Override the updateDisplayList() method 
@@ -89,6 +71,9 @@ package
       
       if( super.data ) 
       {
+        if ( unscaledHeight != measuredHeight )
+          dispatchEvent( new RendererResizeEvent( RendererResizeEvent.RENDERER_RESIZE, true, true ) );
+        
         //Set the label to our title data field
         super.label.text = super.data.title;
         
@@ -104,9 +89,8 @@ package
       	description.x = super.label.x;
       	description.y = super.label.y + super.label.textHeight;
       	
-      	//If we don't set the height the text doesn't display. But if we do this
-      	//in measure(), it screws up the height of the renderer
-      	description.height = description.measuredHeight;
+      	description.width = width - description.x;
+        description.setActualSize( description.getExplicitOrMeasuredWidth(), description.getExplicitOrMeasuredHeight() );
       }
     }
   }
