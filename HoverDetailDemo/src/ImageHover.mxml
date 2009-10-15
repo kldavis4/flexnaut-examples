@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HoverComponent xmlns="*" xmlns:mx="http://www.adobe.com/2006/mxml">
+<!-- Simple extension of the HoverComponent to display 
+     an image specified by the source property with a title -->
+
+<mx:Script>
+  <![CDATA[
+    [Bindable] public var source:String;
+    [Bindable] public var title:String;
+  ]]>
+</mx:Script>
+
+  <mx:Panel paddingBottom="5" 
+            paddingLeft="5" 
+            paddingTop="5" 
+            paddingRight="5" 
+            backgroundAlpha="1" 
+            title="{title}">
+    <mx:Image id="image" source="{source}"/>
+  </mx:Panel>
+</HoverComponent>

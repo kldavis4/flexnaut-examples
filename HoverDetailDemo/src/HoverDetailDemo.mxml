@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" creationComplete="init()">
+<mx:Script>
+  <![CDATA[
+    import mx.collections.ArrayCollection;
+    [Bindable] private var dataProvider:ArrayCollection = 
+                                    new ArrayCollection( [ { name: "Leonard Nimoy", image: "nimoy.jpg" }, 
+                                                           { name: "William Shatner", image: "shatner.jpg" }, 
+                                                           { name: "Deforest Kelley", image: "kelley.jpg" },] );
+  ]]>
+</mx:Script>
+  <mx:Panel title="Famous Actors: Hover Over For More Details">
+    <mx:List dataProvider="{dataProvider}" 
+             labelField="name" 
+             itemRenderer="PersonRenderer" 
+             width="100%"/>
+  </mx:Panel>
+</mx:Application>
