@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>flexnaut</groupId>
-  <artifactId>TreeRendererExample</artifactId>
+  <artifactId>TreeRendererExample2</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>swf</packaging>
 
-  <name>TreeRenderer Example</name>
+  <name>TreeRenderer Example Version 2</name>
 
   <build>
     <sourceDirectory>src</sourceDirectory>
