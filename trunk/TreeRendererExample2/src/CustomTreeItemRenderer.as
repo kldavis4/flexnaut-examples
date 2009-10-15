@@ -3,7 +3,6 @@ package
   import mx.controls.treeClasses.TreeItemRenderer;
   
   import mx.controls.Image;
-  import mx.controls.Tree;
   import mx.controls.Text;
   
   import mx.events.ResizeEvent;
@@ -60,7 +59,8 @@ package
     {
       super.measure();
       
-      measuredHeight = measuredMinHeight = measuredHeight + Math.max( description.getExplicitOrMeasuredHeight(), iconImage.getExplicitOrMeasuredHeight() ); 
+      //We add the height of the Text field to the calculated height of the renderer
+      measuredHeight = measuredMinHeight = measuredHeight + description.getExplicitOrMeasuredHeight(); 
     }
      
     // Override the updateDisplayList() method 
@@ -71,6 +71,9 @@ package
       
       if( super.data ) 
       {
+        //This resolves the apparent bug in the Tree component
+        //If the calculated height of the renderer doesn't match what gets passed to this 
+        //method, we need to tell the Tree to re-layout the renderers
         if ( unscaledHeight != measuredHeight )
           dispatchEvent( new RendererResizeEvent( RendererResizeEvent.RENDERER_RESIZE, true, true ) );
         
@@ -89,7 +92,10 @@ package
       	description.x = super.label.x;
       	description.y = super.label.y + super.label.textHeight;
       	
+      	//This forces the Text component to calculate it's height
       	description.width = width - description.x;
+      	
+      	//This sets the Text component to the calculated width & height
         description.setActualSize( description.getExplicitOrMeasuredWidth(), description.getExplicitOrMeasuredHeight() );
       }
     }
