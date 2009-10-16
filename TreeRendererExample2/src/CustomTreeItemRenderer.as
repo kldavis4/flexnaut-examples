@@ -1,11 +1,9 @@
 package
 {
-  import mx.controls.treeClasses.TreeItemRenderer;
-  
   import mx.controls.Image;
   import mx.controls.Text;
-  
-  import mx.events.ResizeEvent;
+  import mx.controls.listClasses.ListBase;
+  import mx.controls.treeClasses.TreeItemRenderer;
     
   public class CustomTreeItemRenderer extends TreeItemRenderer
   {
@@ -74,8 +72,7 @@ package
         //This resolves the apparent bug in the Tree component
         //If the calculated height of the renderer doesn't match what gets passed to this 
         //method, we need to tell the Tree to re-layout the renderers
-        if ( unscaledHeight != measuredHeight )
-          dispatchEvent( new RendererResizeEvent( RendererResizeEvent.RENDERER_RESIZE, true, true ) );
+        if ( unscaledHeight != measuredHeight )  callLater( ListBase(owner).invalidateList );
         
         //Set the label to our title data field
         super.label.text = super.data.title;

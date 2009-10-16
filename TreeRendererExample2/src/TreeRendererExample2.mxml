@@ -43,11 +43,11 @@
     ]]>
   </mx:Script>
   <mx:Panel title="Variable Size Tree Item Renderer Example" height="100%" width="100%">
-    <local:CustomTree dataProvider="{dataProvider}" 
-                      defaultLeafIcon="{null}" 
-                      showRoot="false" 
-                      variableRowHeight="true"
-                      itemRenderer="CustomTreeItemRenderer"
-                      width="100%" height="100%"/>
+    <mx:Tree dataProvider="{dataProvider}" 
+             defaultLeafIcon="{null}"
+             showRoot="false" 
+             variableRowHeight="true"
+             itemRenderer="CustomTreeItemRenderer"
+             width="100%" height="100%"/>
   </mx:Panel>
 </mx:Application>
