@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+  <mx:Script>
+    <![CDATA[
+      [Bindable] private var myData1:Array = [ { title : 'blah1<br>This is the <b>long one</b>. Knock <br>Knock', 
+                                                 children : [ { title:'<i>child1</i>' }, 
+                                                              { title:'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent volutpat volutpat quam. <br>Praesent sed lorem sed velit malesuada posuere. Donec tempus, libero sit amet tristique fringilla, odio mauris tempor enim, ut ornare justo ipsum interdum ipsum. Nam dapibus libero ac pede. Pellentesque posuere, erat vitae euismod laoreet, dolor quam semper massa, sit amet consectetuer mauris lacus id enim. Morbi tortor. Vestibulum sollicitudin est varius erat. Aliquam erat volutpat. Nam sem massa, tempus non, sodales id, auctor in, arcu. Sed faucibus massa sed nunc. Ut volutpat. Sed ultricies. Cras ante. Sed commodo sodales risus. Nullam enim ligula, malesuada vitae, consequat at, hendrerit eu, tortor. Sed turpis nulla, imperdiet sit amet, tincidunt egestas, pulvinar non, mi. Ut nulla quam, commodo vel, consequat at, faucibus mollis, est. In eu tortor in leo consequat sollicitudin. Etiam commodo arcu id velit. Nullam eget quam.'}] }, 
+                                               { title : 'blah2'}, 
+                                               { title : 'blah3' } ];
+      [Bindable] private var myData2:Array = [ 'blah1<br>This is the <b>long one</b>. Knock <br>Knock', 
+                                               'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent volutpat volutpat quam. Praesent sed lorem sed velit malesuada posuere. Donec tempus, libero sit amet tristique fringilla, odio mauris tempor enim, ut ornare justo ipsum interdum ipsum. Nam dapibus libero ac pede. Pellentesque posuere, erat vitae euismod laoreet, dolor quam semper massa, sit amet consectetuer mauris lacus id enim. Morbi tortor. Vestibulum sollicitudin est varius erat. Aliquam erat volutpat. Nam sem massa, tempus non, sodales id, auctor in, arcu. Sed faucibus massa sed nunc. Ut volutpat. Sed ultricies. Cras ante. Sed commodo sodales risus. Nullam enim ligula, malesuada vitae, consequat at, hendrerit eu, tortor. Sed turpis nulla, imperdiet sit amet, tincidunt egestas, pulvinar non, mi. Ut nulla quam, commodo vel, consequat at, faucibus mollis, est. In eu tortor in leo consequat sollicitudin. Etiam commodo arcu id velit. Nullam eget quam.', 
+                                               'blah3' ];
+    ]]>
+  </mx:Script>
+  <mx:HBox width="100%" height="100%" horizontalGap="5">
+    <mx:Tree variableRowHeight="true" itemRenderer="MyTreeItemRenderer" dataProvider="{myData1}" width="100%" height="100%"
+       folderClosedIcon="{null}" folderOpenIcon="{null}" defaultLeafIcon="{null}"/>
+    <mx:List variableRowHeight="true" itemRenderer="MyListItemRenderer" dataProvider="{myData2}" width="100%" height="100%"/>
+  </mx:HBox>
+</mx:Application>

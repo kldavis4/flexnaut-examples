@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExtensibleListItemRenderer xmlns="*" xmlns:mx="http://www.adobe.com/2006/mxml">
+  <contents>
+    <mx:HBox>
+      <mx:Text htmlText="LABEL: {data}" width="{width}"/>
+    </mx:HBox>    
+  </contents>
+</ExtensibleListItemRenderer>
