@@ -8,8 +8,10 @@ package
 
   public class ExtensibleListItemRenderer extends ListItemRenderer
   {
+    //We use a deferred instance to cause component instantiation
+    //to be deferred until it is needed
     [InstanceType("mx.core.UIComponent")]
-    public var contents:IDeferredInstance;
+    public var contents:IDeferredInstance; 
     
     public function ExtensibleListItemRenderer()
     {
@@ -20,6 +22,7 @@ package
     
     private function handleInitialize( evt:FlexEvent ):void
     {
+      //On initialize, add the custom contents to the renderer
       if ( contents ) addChild( UIComponent(contents.getInstance()) );
     }
     
@@ -27,6 +30,7 @@ package
     {
       super.createChildren();
       
+      //hide the default label
       label.visible = false;
     }
     
@@ -34,6 +38,7 @@ package
     {
       super.measure();
       
+      //The height of the renderer is set to the height of the contents
       if ( contents ) measuredHeight = measuredMinHeight = UIComponent(contents.getInstance()).getExplicitOrMeasuredHeight();
     }
     
@@ -42,22 +47,23 @@ package
       super.updateDisplayList( unscaledWidth, unscaledHeight );
       
       if( super.data ) 
-      {
-        //This resolves the apparent bug in the Tree component
-        //If the calculated height of the renderer doesn't match what gets passed to this 
-        //method, we need to tell the Tree to re-layout the renderers
-        if ( unscaledHeight != measuredHeight )  callLater( ListBase(owner).invalidateList );
-        
+      {        
         if ( contents )
         {
+          //Position the contents using the position of the label
           UIComponent(contents.getInstance()).x = label.x;
           UIComponent(contents.getInstance()).y = label.y;
           
-          //This forces the Text component to calculate it's height
+          //TForces the contents to calculate height by setting the width
           UIComponent(contents.getInstance()).width = width - UIComponent(contents.getInstance()).x;
 
-          //This sets the Text component to the calculated width & height
+          //This sets the components actual size to the calculated width & height
           UIComponent(contents.getInstance()).setActualSize( UIComponent(contents.getInstance()).getExplicitOrMeasuredWidth(), UIComponent(contents.getInstance()).getExplicitOrMeasuredHeight() );
+          
+          //This resolves an (apparent) bug in the ListBase component
+          //If the calculated height of the renderer doesn't match what gets passed to this 
+          //method, we need to tell the Tree to re-layout the renderers
+          if ( unscaledHeight != measuredHeight )  callLater( ListBase(owner).invalidateList );
         }
       }
     }

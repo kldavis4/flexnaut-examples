@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ExtensibleTreeItemRenderer xmlns="*" xmlns:mx="http://www.adobe.com/2006/mxml">
   <contents>
-    <mx:HBox>
-      <mx:Text htmlText="LABEL: {data.title}" width="100%"/>
-    </mx:HBox>    
+    <ActorRenderer data="{data}"/>
   </contents>
 </ExtensibleTreeItemRenderer>
