@@ -45,7 +45,7 @@ package
     override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void
     {
       super.updateDisplayList( unscaledWidth, unscaledHeight );
-      
+
       if( super.data ) 
       {
         if ( contents )
@@ -63,7 +63,7 @@ package
           //This resolves an (apparent) bug in the ListBase component
           //If the calculated height of the renderer doesn't match what gets passed to this 
           //method, we need to tell the Tree to re-layout the renderers
-          if ( unscaledHeight != measuredHeight )  callLater( ListBase(owner).invalidateList );
+          if ( unscaledHeight != measuredHeight && name != "hiddenItem" )  callLater( ListBase(owner).invalidateList );
         }
       }
     }
