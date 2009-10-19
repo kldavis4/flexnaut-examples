@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml">
+  <mx:VBox>
+    <mx:Image id="image" source="{data.image != null ? data.image : 'missing.jpg'}"/>
+    <mx:Label id="name_label" fontWeight="bold" text="{data.name}"/>  
+  </mx:VBox>
+  <mx:Text htmlText="{data.bio}" width="{width - Math.max( image.width, name_label.width ) - 20}"/>
+</mx:HBox>
